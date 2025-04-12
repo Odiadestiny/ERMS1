@@ -1,4 +1,5 @@
 using ERMS.Data;
+using ERMS.Repositories; // Add this so the DI registration finds IEmployeeRepository and EmployeeRepository
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,9 @@ namespace ERMS
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
+
+            // Register the repository using the repository pattern.
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             var app = builder.Build();
 

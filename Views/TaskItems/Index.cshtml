@@ -9,6 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -46,7 +47,8 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Project.Title)
+                @* Use null-conditional operator to safely access Project.Title *@
+                @(item.Project?.Title ?? "No Project")
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TaskItemId">Edit</a> |

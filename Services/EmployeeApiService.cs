@@ -23,7 +23,8 @@ namespace ERMS.Services
             var response = await _httpClient.GetAsync("api/EmployeesApi");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<Employee>>(json);
+            // Return an empty list if deserialization results in null.
+            return JsonConvert.DeserializeObject<List<Employee>>(json) ?? new List<Employee>();
         }
         
         // GET: Retrieve a single employee by id
@@ -32,7 +33,12 @@ namespace ERMS.Services
             var response = await _httpClient.GetAsync($"api/EmployeesApi/{id}");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Employee>(json);
+            var employee = JsonConvert.DeserializeObject<Employee>(json);
+            if (employee == null)
+            {
+                throw new Exception("Employee not found or deserialization failed.");
+            }
+            return employee;
         }
 
         // POST: Create a new employee
@@ -48,7 +54,8 @@ namespace ERMS.Services
 
             // Deserialize the created employee from the response
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Employee>(jsonResponse);
+            return JsonConvert.DeserializeObject<Employee>(jsonResponse) 
+                   ?? throw new Exception("Failed to deserialize the created employee.");
         }
 
         // PUT: Update an existing employee

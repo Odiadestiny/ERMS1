@@ -21,5 +21,9 @@ namespace ERMS.Models
         [Required]
         public int ProjectId { get; set; }
         public Project? Project { get; set; }
+        
+        // NEW: Direct link to the Employee assigned to the task.
+        public int? EmployeeId { get; set; }  // Nullable in case some tasks are not yet assigned.
+        public Employee? Employee { get; set; }
     }
 }

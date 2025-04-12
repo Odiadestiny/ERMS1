@@ -1,35 +1,35 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ERMS.Data;
 using ERMS.Models;
+using ERMS.Repositories;
+using Microsoft.EntityFrameworkCore;  
 
 namespace ERMS.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IEmployeeRepository _repository;
 
         // Define the available roles.
-        private readonly List<string> _availableRoles = new List<string> 
-        { 
-            "Admin", "Manager", "Employee" 
+        private readonly List<string> _availableRoles = new List<string>
+        {
+            "Admin", "Manager", "Employee"
         };
 
-        public EmployeesController(ApplicationDbContext context)
+        public EmployeesController(IEmployeeRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            // Returns a view that displays a list of all employees.
-            return View(await _context.Employees.ToListAsync());
+            // Retrieve all employees via the repository.
+            var employees = await _repository.GetAllEmployeesAsync();
+            return View(employees);
         }
 
         // GET: Employees/Details/5
@@ -41,8 +41,7 @@ namespace ERMS.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
+            var employee = await _repository.GetEmployeeByIdAsync(id.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -54,21 +53,19 @@ namespace ERMS.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
-            // Populate the Role drop-down list
+            // Populate the Role drop-down list.
             ViewBag.RoleList = new SelectList(_availableRoles);
             return View();
         }
 
         // POST: Employees/Create
-        // To protect from overposting attacks, bind only the properties you need.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
+                await _repository.AddEmployeeAsync(employee);
                 return RedirectToAction(nameof(Index));
             }
             // Ensure the role list is repopulated if the model state is invalid.
@@ -84,18 +81,17 @@ namespace ERMS.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _repository.GetEmployeeByIdAsync(id.Value);
             if (employee == null)
             {
                 return NotFound();
             }
-            // Populate the role drop-down with current role selected.
+            // Populate the role drop-down with the current role selected.
             ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
 
         // POST: Employees/Edit/5
-        // Bind only the properties you wish to update.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
@@ -109,18 +105,16 @@ namespace ERMS.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
+                    await _repository.UpdateEmployeeAsync(employee);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (!_repository.EmployeeExists(employee.EmployeeId))
                     {
                         return NotFound();
                     }
                     else
                     {
-                        // Optionally handle the error or rethrow it.
                         throw;
                     }
                 }
@@ -139,8 +133,7 @@ namespace ERMS.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
+            var employee = await _repository.GetEmployeeByIdAsync(id.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -154,19 +147,8 @@ namespace ERMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee != null)
-            {
-                _context.Employees.Remove(employee);
-                await _context.SaveChangesAsync();
-            }
+            await _repository.DeleteEmployeeAsync(id);
             return RedirectToAction(nameof(Index));
-        }
-
-        // Helper method to check if an employee exists by id.
-        private bool EmployeeExists(int id)
-        {
-            return _context.Employees.Any(e => e.EmployeeId == id);
         }
     }
 }
