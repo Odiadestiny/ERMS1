@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization; // For [Authorize]
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ERMS.Models;
 using ERMS.Repositories;
-using Microsoft.AspNetCore.Authorization;
 
 namespace ERMS.Controllers
 {
@@ -28,7 +28,6 @@ namespace ERMS.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            // Retrieve all employees via the repository.
             var employees = await _repository.GetAllEmployeesAsync();
             return View(employees);
         }
@@ -38,7 +37,6 @@ namespace ERMS.Controllers
         {
             if (id == null)
             {
-                // If no id is provided, return a 404 Not Found response.
                 return NotFound();
             }
 
@@ -55,13 +53,11 @@ namespace ERMS.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            // Populate the Role drop-down list.
             ViewBag.RoleList = new SelectList(_availableRoles);
             return View();
         }
 
         // POST: Employees/Create
-        // To protect from overposting attacks, bind only the properties you need.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -72,7 +68,6 @@ namespace ERMS.Controllers
                 await _repository.AddEmployeeAsync(employee);
                 return RedirectToAction(nameof(Index));
             }
-            // Ensure the role list is repopulated if the model state is invalid.
             ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
@@ -90,13 +85,11 @@ namespace ERMS.Controllers
             {
                 return NotFound();
             }
-            // Populate the role drop-down with the current role selected.
             ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
 
         // POST: Employees/Edit/5
-        // Bind only the properties you wish to update.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
@@ -125,7 +118,6 @@ namespace ERMS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            // Repopulate the role list if model state is invalid.
             ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
