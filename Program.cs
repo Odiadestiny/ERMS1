@@ -29,13 +29,13 @@ namespace ERMS
             // Optional: Register Swagger for API documentation
             builder.Services.AddSwaggerGen();
 
-            // (Optional) Register Application Insights if needed:
-            // builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["ApplicationInsights:InstrumentationKey"]);
+            // Register Application Insights if needed:
+            builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["ApplicationInsights:InstrumentationKey"]);
 
             // Register HttpClient for API consumption (if you plan to use it later)
             builder.Services.AddHttpClient<ERMS.Services.EmployeeApiService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:5001/");
+                client.BaseAddress = new Uri("https://localhost:5242/");
             });
 
             // Register the repository using the repository pattern.
