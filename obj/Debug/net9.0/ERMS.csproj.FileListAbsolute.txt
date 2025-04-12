@@ -410,3 +410,4 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/obj/Debug/net9.0/ERMS.sourcelink.json

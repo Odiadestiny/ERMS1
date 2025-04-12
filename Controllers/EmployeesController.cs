@@ -14,6 +14,12 @@ namespace ERMS.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        // Define the available roles.
+        private readonly List<string> _availableRoles = new List<string> 
+        { 
+            "Admin", "Manager", "Employee" 
+        };
+
         public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
@@ -22,6 +28,7 @@ namespace ERMS.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
+            // Returns a view that displays a list of all employees.
             return View(await _context.Employees.ToListAsync());
         }
 
@@ -30,6 +37,7 @@ namespace ERMS.Controllers
         {
             if (id == null)
             {
+                // If no id is provided, return a 404 Not Found response.
                 return NotFound();
             }
 
@@ -46,12 +54,13 @@ namespace ERMS.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
+            // Populate the Role drop-down list
+            ViewBag.RoleList = new SelectList(_availableRoles);
             return View();
         }
 
         // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, bind only the properties you need.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
@@ -62,6 +71,8 @@ namespace ERMS.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            // Ensure the role list is repopulated if the model state is invalid.
+            ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
 
@@ -78,12 +89,13 @@ namespace ERMS.Controllers
             {
                 return NotFound();
             }
+            // Populate the role drop-down with current role selected.
+            ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
 
         // POST: Employees/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Bind only the properties you wish to update.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
@@ -108,11 +120,14 @@ namespace ERMS.Controllers
                     }
                     else
                     {
+                        // Optionally handle the error or rethrow it.
                         throw;
                     }
                 }
                 return RedirectToAction(nameof(Index));
             }
+            // Repopulate the role list if model state is invalid.
+            ViewBag.RoleList = new SelectList(_availableRoles, employee.Role);
             return View(employee);
         }
 
@@ -143,12 +158,12 @@ namespace ERMS.Controllers
             if (employee != null)
             {
                 _context.Employees.Remove(employee);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
+        // Helper method to check if an employee exists by id.
         private bool EmployeeExists(int id)
         {
             return _context.Employees.Any(e => e.EmployeeId == id);

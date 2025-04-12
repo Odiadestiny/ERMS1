@@ -2,7 +2,6 @@ using ERMS.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ERMS
 {
     public class Program
@@ -16,7 +15,7 @@ namespace ERMS
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add ASP.NET Core Identity services with role support and configure Identity options
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
             })
@@ -33,7 +32,10 @@ namespace ERMS
             // builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["ApplicationInsights:InstrumentationKey"]);
 
             // Register HttpClient for API consumption (if you plan to use it later)
-            // For example: builder.Services.AddHttpClient<EmployeeApiService>(...);
+            builder.Services.AddHttpClient<ERMS.Services.EmployeeApiService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:5001/");
+            });
 
             var app = builder.Build();
 
@@ -65,7 +67,7 @@ namespace ERMS
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => 
+                app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "ERMS API V1");
                 });
