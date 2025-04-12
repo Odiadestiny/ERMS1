@@ -9,6 +9,7 @@ namespace ERMS.Models
         public int ProjectId { get; set; }
         
         [Required]
+        [StringLength(200)]
         public string? Title { get; set; }
         
         public string? Description { get; set; }
@@ -19,7 +20,8 @@ namespace ERMS.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         
-        // A project can be associated with many employees (for simplicity, using a list)
+        // A project can be associated with many employees.
+        // (This might be a many-to-many relationship in a full implementation.)
         public ICollection<Employee>? Employees { get; set; }
     }
 }

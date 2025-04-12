@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization; // Added for [Authorize]
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace ERMS.Controllers
         }
 
         // GET: TaskItems/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "Title");
@@ -53,10 +55,9 @@ namespace ERMS.Controllers
         }
 
         // POST: TaskItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("TaskItemId,Title,Description,Priority,Status,ProjectId")] TaskItem taskItem)
         {
             if (ModelState.IsValid)
@@ -87,8 +88,6 @@ namespace ERMS.Controllers
         }
 
         // POST: TaskItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TaskItemId,Title,Description,Priority,Status,ProjectId")] TaskItem taskItem)

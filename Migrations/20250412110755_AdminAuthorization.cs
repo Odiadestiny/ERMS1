@@ -5,7 +5,7 @@
 namespace ERMS.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateApI2 : Migration
+    public partial class AdminAuthorization : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

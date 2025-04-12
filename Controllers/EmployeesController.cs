@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ERMS.Models;
 using ERMS.Repositories;
-using Microsoft.EntityFrameworkCore;  
+using Microsoft.AspNetCore.Authorization;
 
 namespace ERMS.Controllers
 {
@@ -51,6 +52,7 @@ namespace ERMS.Controllers
         }
 
         // GET: Employees/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             // Populate the Role drop-down list.
@@ -59,8 +61,10 @@ namespace ERMS.Controllers
         }
 
         // POST: Employees/Create
+        // To protect from overposting attacks, bind only the properties you need.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -92,6 +96,7 @@ namespace ERMS.Controllers
         }
 
         // POST: Employees/Edit/5
+        // Bind only the properties you wish to update.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
