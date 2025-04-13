@@ -1,6 +1,12 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/ERMS
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/web.config
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/appsettings.Development.json
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/appsettings.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/appsettings.Development.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/appsettings.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/ERMS.deps.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/ERMS.runtimeconfig.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/publish/ERMS.staticwebassets.endpoints.json
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/ERMS.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/ERMS.runtimeconfig.json
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/publish/ERMS.pdb

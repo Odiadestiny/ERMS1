@@ -421,3 +421,9 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/obj/Release/net9.0/ERMS.pdb
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/obj/Release/net9.0/ERMS.genruntimeconfig.cache
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/obj/Release/net9.0/ref/ERMS.dll
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/web.config
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/appsettings.Development.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/appsettings.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/ERMS.deps.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/ERMS.runtimeconfig.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Release/net9.0/publish/ERMS.staticwebassets.endpoints.json
