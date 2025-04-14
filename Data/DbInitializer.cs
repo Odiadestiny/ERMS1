@@ -53,7 +53,13 @@ namespace ERMS.Data
             var user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                user = new IdentityUser { UserName = email, Email = email };
+                // Ensure the email is confirmed by setting EmailConfirmed to true.
+                user = new IdentityUser 
+                { 
+                    UserName = email, 
+                    Email = email,
+                    EmailConfirmed = true
+                };
                 var createResult = await userManager.CreateAsync(user, password);
                 if (createResult.Succeeded)
                 {
