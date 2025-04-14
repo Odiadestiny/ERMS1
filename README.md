@@ -117,7 +117,7 @@ az appservice plan create --name ERMSAppServicePlan --resource-group ERMSResourc
 Create a Web App:
 
 
-az webapp create --name youruniqueappname --resource-group ERMSResourceGroup --plan ERMSAppServicePlan
+az webapp create --name destinemsapp --resource-group ERMSResourceGroup --plan ERMSAppServicePlan
 Deploy the Application:
 
 
@@ -129,4 +129,4 @@ In the Azure Portal, configure application settings (e.g., set ASPNETCORE_ENVIRO
 Access Your Application:
 
 Open your browser and navigate to:
-https://youruniqueappname.azurewebsites.net
+https://destinemsapp.azurewebsites.net/
