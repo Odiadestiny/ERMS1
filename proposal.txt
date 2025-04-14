@@ -1,0 +1,115 @@
+
+Enterprise Resource Management System (ERMS)
+Destiny Odia – 991715771
+Sheridan College
+PROG36944 – Advanced .Net Server-side Technologies
+April 9, 2025
+
+Project Overview
+The Enterprise Resource Management System (ERMS) is a full-stack, web-based platform designed to manage employees, projects, and tasks within an organization. The system provides secure user authentication (with role-based access control for Admin, Manager, and Employee roles), comprehensive reporting, RESTful API integration, and robust security measures. Built with ASP.NET Core MVC and Web API, EF Core for data access, and SQL Server as the database backend, the project emphasizes scalability, maintainability, and adherence to modern security and deployment best practices.
+
+Objectives
+Full-Stack Development:
+Build the application using ASP.NET Core MVC and Web API to ensure a clear separation of concerns across the presentation, business, and data access layers.
+
+Secure User Authentication & Authorization:
+Implement ASP.NET Core Identity with support for roles (Admin, Manager, Employee). Seed the database with sample users and roles, and restrict sensitive actions (e.g., creating new records) to specific roles (Admins only).
+
+CRUD Operations:
+Enable complete Create, Read, Update, and Delete (CRUD) functionality for:
+
+Employee Management (with validations, using EF Core and repository patterns)
+
+Project Management (including employee assignments)
+
+Task Management (with priority and status)
+
+RESTful API Integration:
+Develop secure REST API endpoints that mirror the MVC functionality, ensuring that API calls use proper HTTP methods (GET, POST, PUT, DELETE). The MVC application consumes these APIs via HttpClient.
+
+Database Design & Reporting:
+
+Design a normalized SQL Server database according to a carefully planned ERD.
+
+Implement stored procedures to manage data manipulation.
+
+Create custom reporting (using SSRS or Power BI Report Builder on a Windows VM) to display employee performance and project progress.
+
+Data Security & Best Practices:
+
+SQL Injection Prevention: Rely on EF Core’s parameterized queries.
+
+CSRF Protection: Include anti-forgery tokens in all data-modifying forms and validate them in controller actions.
+
+XSS Protection: Use Razor’s default HTML encoding, avoid using raw HTML, and optionally implement a Content Security Policy (CSP) header in the middleware.
+
+Deployment & Monitoring:
+
+Deployment: Publish the application in Release mode and deploy it on Azure App Service (or alternatively AWS/IIS) with appropriate production configurations, environment variables, and connection strings.
+
+Logging & Monitoring: Integrate Application Insights (using the new ConnectionString-based configuration) and optionally NLog to log errors and performance metrics for proactive monitoring and diagnostics.
+
+Testing & Debugging:
+
+Write unit and integration tests using xUnit (and/or NUnit), employing mock repositories where applicable.
+
+Achieve at least the minimal code coverage required (5%) while striving for robust testing across MVC controllers and API endpoints.
+
+Proposed Technology Stack
+Backend: ASP.NET Core MVC, ASP.NET Core Web API, Entity Framework Core
+
+Frontend: Razor Views, JavaScript, HTML, CSS
+
+Database: SQL Server
+
+Testing: xUnit or NUnit (with mocking frameworks for dependency injection)
+
+Deployment: Azure App Service (deploy using Azure CLI)
+
+Monitoring: Application Insights (primary) and/or NLog for logging
+
+Version Control: Git (hosted on GitHub or GitLab)
+
+Project Timeline (7 Weeks)
+Week 1 – Project Planning & Setup:
+
+Finalize the proposal, create the Entity Relationship Diagram (ERD), and set up the development environment (Visual Studio Code, .NET Core, SQL Server on Docker, Git).
+
+Weeks 2-3 – MVC Implementation:
+
+Develop user authentication using ASP.NET Identity with proper role-based access controls.
+
+Implement CRUD operations for Employees, Projects, and Tasks.
+
+Week 4 – Web API Development & Integration:
+
+Develop secure RESTful API endpoints for all key functions.
+
+Integrate client-side API consumption in the MVC application using HttpClient.
+
+Week 5 – Testing & Debugging:
+
+Write unit tests for MVC controllers and API endpoints using xUnit/NUnit.
+
+Implement dependency injection and mock repositories for isolated testing.
+
+Achieve at least 5% code coverage (with efforts towards more robust testing).
+
+Week 6 – SQL Server & Reporting:
+
+Implement a normalized SQL Server database schema and stored procedures.
+
+Develop custom reports for employee performance and project progress using SSRS or Power BI Report Builder.
+
+Week 7 – Security, Deployment & Final Documentation:
+
+Integrate advanced data security measures (SQL injection prevention, CSRF/XSS protection).
+
+Deploy the application to Azure App Service with production-level configuration.
+
+Set up logging and monitoring (using Application Insights or NLog).
+
+Complete project documentation and prepare for final project presentation.
+
+Conclusion
+This ERMS capstone project is a comprehensive full-stack development effort, addressing all aspects of modern application design—from secure user authentication and role-based access control to robust deployment and monitoring. Working as an individual, I will be responsible for each component of the project, ensuring a robust, secure, and scalable solution that meets real-world production standards.

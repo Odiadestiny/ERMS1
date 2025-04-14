@@ -36,31 +36,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="TaskItems" asp-action="Index">Task Items</a>
                         </li>
                         
-                        <!-- Conditionally display Create links for Admins only -->
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Create">
-                                    Create Employee
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Projects" asp-action="Create">
-                                    Create Project
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TaskItems" asp-action="Create">
-                                    Create Task
-                                </a>
-                            </li>
-                        }
+                        
+                
                     </ul>
                     <!-- Render the login partial on the right side -->
                     <partial name="_LoginPartial" />

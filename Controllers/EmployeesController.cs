@@ -50,7 +50,8 @@ namespace ERMS.Controllers
         }
 
         // GET: Employees/Create
-        [Authorize(Roles = "Admin")]
+        // Removed [Authorize(Roles = "Admin")], so any authenticated user may access this action.
+        [Authorize] // Optionally require authenticated users.
         public IActionResult Create()
         {
             ViewBag.RoleList = new SelectList(_availableRoles);
@@ -60,7 +61,7 @@ namespace ERMS.Controllers
         // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize] // Optionally require authenticated users.
         public async Task<IActionResult> Create([Bind("EmployeeId,FirstName,LastName,Email,Role")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -123,6 +124,8 @@ namespace ERMS.Controllers
         }
 
         // GET: Employees/Delete/5
+        // Restrict Delete access to Admins only.
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,6 +145,7 @@ namespace ERMS.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _repository.DeleteEmployeeAsync(id);
