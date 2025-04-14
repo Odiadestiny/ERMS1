@@ -406,12 +406,6 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/obj/Debug/net9.0/ERMS.sourcelink.json
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/web.config
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/appsettings.Development.json
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/appsettings.json
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.deps.json
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.runtimeconfig.json
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.staticwebassets.endpoints.json
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/Microsoft.ApplicationInsights.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/Microsoft.ApplicationInsights.AspNetCore.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/Microsoft.AI.DependencyCollector.dll
@@ -426,7 +420,6 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/NLog.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/NLog.Extensions.Logging.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/NLog.Web.AspNetCore.dll
-/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/nlog.config
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/Microsoft.Bcl.Cryptography.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/cs/Microsoft.Data.SqlClient.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/de/Microsoft.Data.SqlClient.resources.dll

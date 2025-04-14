@@ -47,7 +47,7 @@ namespace ERMS.Controllers
         }
 
         // GET: TaskItems/Create
-        [Authorize(Roles = "Admin")]
+        // Removed Admin authorization so that any authenticated user can access Create.
         public IActionResult Create()
         {
             ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "Title");
@@ -57,7 +57,7 @@ namespace ERMS.Controllers
         // POST: TaskItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        // Removed Admin authorization so that any authenticated user can submit Create.
         public async Task<IActionResult> Create([Bind("TaskItemId,Title,Description,Priority,Status,ProjectId")] TaskItem taskItem)
         {
             if (ModelState.IsValid)
@@ -122,6 +122,7 @@ namespace ERMS.Controllers
         }
 
         // GET: TaskItems/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,6 +144,7 @@ namespace ERMS.Controllers
         // POST: TaskItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var taskItem = await _context.TaskItems.FindAsync(id);

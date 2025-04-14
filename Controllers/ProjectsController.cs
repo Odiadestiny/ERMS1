@@ -44,7 +44,8 @@ namespace ERMS.Controllers
         }
 
         // GET: Projects/Create
-        [Authorize(Roles = "Admin")]
+        // Remove Admin-only restriction for Create actions.
+        // Optionally, add [Authorize] to require users to be authenticated.
         public IActionResult Create()
         {
             return View();
@@ -53,7 +54,7 @@ namespace ERMS.Controllers
         // POST: Projects/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        // Removed Admin-only requirement.
         public async Task<IActionResult> Create([Bind("ProjectId,Title,Description,StartDate,EndDate")] Project project)
         {
             if (ModelState.IsValid)
@@ -115,6 +116,7 @@ namespace ERMS.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +137,7 @@ namespace ERMS.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var project = await _context.Projects.FindAsync(id);
