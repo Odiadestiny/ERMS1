@@ -436,3 +436,10 @@
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/zh-Hant/Microsoft.Data.SqlClient.resources.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/runtimes/unix/lib/net9.0/Microsoft.Data.SqlClient.dll
 /Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/runtimes/win/lib/net9.0/Microsoft.Data.SqlClient.dll
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/nlog.config
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/web.config
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/appsettings.Development.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/appsettings.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.deps.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.runtimeconfig.json
+/Users/destinyodia/Documents/SEMESTER5/Capstone.NET/PROJECT/ERMS/bin/Debug/net9.0/publish/ERMS.staticwebassets.endpoints.json
